@@ -108,18 +108,11 @@ body {
     border-color: var(--primary-color);
 }
 
-/* Main: side-by-side on large screens, stacked on mobile */
+/* Main: single column – wheel, then entries, then info cards */
 .main-container {
-    display: flex;
     flex: 1;
     min-height: 0;
-}
-
-@media (max-width: 1024px) {
-    .main-container {
-        flex-direction: column;
-        min-height: auto;
-    }
+    overflow-y: auto;
 }
 
 /* Wheel section */
@@ -257,7 +250,7 @@ body {
 .info-cards {
     width: 100%;
     max-width: 800px;
-    margin-top: 8px;
+    margin-top: 0;
 }
 
 .info-card {
@@ -337,30 +330,25 @@ body {
     opacity: 0.9;
 }
 
-/* Entries panel */
+/* Entries panel: directly below the wheel, full width (max 600px) */
 .entries-panel {
-    width: 400px;
-    min-width: 320px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 24px;
     background-color: var(--bg-medium);
-    border-left: 1px solid var(--border-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-}
-
-@media (max-width: 1024px) {
-    .entries-panel {
-        width: 100%;
-        min-width: 0;
-        border-left: none;
-        border-top: 1px solid var(--border-color);
-        min-height: 380px;
-    }
+    min-height: 320px;
 }
 
 .panel-header {
     display: flex;
     border-bottom: 1px solid var(--border-color);
     background-color: var(--bg-dark);
+    border-radius: 12px 12px 0 0;
 }
 
 .tab {

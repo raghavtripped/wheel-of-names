@@ -52,9 +52,51 @@
                         <span class="spin-instruction">Tap to spin</span>
                         <span class="spin-instruction-sub">or press ctrl+enter</span>
                     </div>
-                    <div class="arrow"></div>
-                </div>
+                    <div class="arrow">                </div>
             </div>
+        </div>
+
+            <!-- Entries panel: just below the wheel -->
+            <aside class="entries-panel">
+                <div class="panel-header">
+                    <button class="tab active" data-tab="entries">Entries <span class="tab-count" id="entriesCount">8</span></button>
+                    <button class="tab" data-tab="results">Results <span class="tab-count" id="resultsCount">0</span></button>
+                </div>
+                <div class="panel-content">
+                    <div class="tab-content active" id="entriesTab">
+                        <div class="controls">
+                            <button class="control-btn" id="shuffleBtn">🔀 Shuffle</button>
+                            <button class="control-btn" id="sortBtn">🔤 Sort</button>
+                            <button class="control-btn">🖼️ Add image ▾</button>
+                        </div>
+                        <label class="advanced-checkbox">
+                            <input type="checkbox" id="advancedCheckbox"> Advanced
+                        </label>
+                        <textarea id="entriesInput" placeholder="Enter names here, one per line...">Ali
+Beatriz
+Charles
+Diya
+Eric
+Fatima
+Gabriel
+Hanna</textarea>
+                        <div class="panel-footer-inline">
+                            <span class="beta-badge">Beta</span>
+                            <button class="add-wheel-btn">+ Add wheel ▾</button>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="resultsTab">
+                        <div class="results-list">
+                            <p class="no-results">No results yet. Spin the wheel!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="version-info">
+                    <span>Version 397</span>
+                    <span class="new-badge">New!</span>
+                    <a href="#" class="changelog-link">Changelog</a>
+                </div>
+            </aside>
 
             <!-- Info cards (match reference: rounded cards with icon + heading) -->
             <div class="info-cards">
@@ -133,48 +175,6 @@
                 </article>
             </div>
         </section>
-
-        <!-- Entries panel -->
-        <aside class="entries-panel">
-            <div class="panel-header">
-                <button class="tab active" data-tab="entries">Entries <span class="tab-count" id="entriesCount">8</span></button>
-                <button class="tab" data-tab="results">Results <span class="tab-count" id="resultsCount">0</span></button>
-            </div>
-            <div class="panel-content">
-                <div class="tab-content active" id="entriesTab">
-                    <div class="controls">
-                        <button class="control-btn" id="shuffleBtn">🔀 Shuffle</button>
-                        <button class="control-btn" id="sortBtn">🔤 Sort</button>
-                        <button class="control-btn">🖼️ Add image ▾</button>
-                    </div>
-                    <label class="advanced-checkbox">
-                        <input type="checkbox" id="advancedCheckbox"> Advanced
-                    </label>
-                    <textarea id="entriesInput" placeholder="Enter names here, one per line...">Ali
-Beatriz
-Charles
-Diya
-Eric
-Fatima
-Gabriel
-Hanna</textarea>
-                    <div class="panel-footer-inline">
-                        <span class="beta-badge">Beta</span>
-                        <button class="add-wheel-btn">+ Add wheel ▾</button>
-                    </div>
-                </div>
-                <div class="tab-content" id="resultsTab">
-                    <div class="results-list">
-                        <p class="no-results">No results yet. Spin the wheel!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="version-info">
-                <span>Version 397</span>
-                <span class="new-badge">New!</span>
-                <a href="#" class="changelog-link">Changelog</a>
-            </div>
-        </aside>
     </div>
 
     <!-- Footer -->
