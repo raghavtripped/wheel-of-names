@@ -28,7 +28,7 @@ class WheelSpinner {
             'Akash',
             'Nimit',                // another exact name
             // /^Dr\.\s+/i,        // regex: matches "Dr. Smith", "Dr. Jane" etc.
-            // /^\d+\./,          // regex: matches "1. Alice", "2. Bob"
+            // /^\d+\./,          // rege₹x: matches "1. Alice", "2. Bob"
             // /^(me|myself)$/i,   // regex: matches "me" or "myself"
         ];
 
@@ -47,6 +47,7 @@ class WheelSpinner {
         this.resizeCanvas();
         this.loadEntries();
         this.drawWheel();
+        this.updateTabCounts();
         window.addEventListener('resize', () => {
             this.resizeCanvas();
             this.drawWheel();
@@ -70,6 +71,7 @@ class WheelSpinner {
             .map(e => e.trim())
             .filter(e => e.length > 0);
         this.drawWheel();
+        this.updateTabCounts();
     }
 
     drawWheel() {
@@ -281,6 +283,14 @@ class WheelSpinner {
         
         this.results.unshift({ name: winner, time: timeStr });
         this.updateResultsDisplay();
+        this.updateTabCounts();
+    }
+
+    updateTabCounts() {
+        const entriesEl = document.getElementById('entriesCount');
+        const resultsEl = document.getElementById('resultsCount');
+        if (entriesEl) entriesEl.textContent = this.entries.length;
+        if (resultsEl) resultsEl.textContent = this.results.length;
     }
 
     updateResultsDisplay() {
@@ -380,6 +390,29 @@ class WheelSpinner {
                 document.getElementById('winnerModal').classList.remove('show');
             }
         });
+
+        // Hamburger menu (mobile)
+        const hamburger = document.getElementById('hamburger');
+        const headerMenu = document.getElementById('headerMenu');
+        if (hamburger && headerMenu) {
+            hamburger.addEventListener('click', () => headerMenu.classList.toggle('open'));
+        }
+
+        // Edit wheel modal
+        const editBtn = document.getElementById('editWheelBtn');
+        const editModal = document.getElementById('editModal');
+        const cancelEdit = document.getElementById('cancelEdit');
+        const confirmEdit = document.getElementById('confirmEdit');
+        if (editBtn && editModal) {
+            editBtn.addEventListener('click', () => editModal.classList.add('show'));
+            if (cancelEdit) cancelEdit.addEventListener('click', () => editModal.classList.remove('show'));
+            if (confirmEdit) confirmEdit.addEventListener('click', () => editModal.classList.remove('show'));
+        }
+        if (editModal) {
+            editModal.addEventListener('click', (e) => {
+                if (e.target === editModal) editModal.classList.remove('show');
+            });
+        }
     }
 }
 
