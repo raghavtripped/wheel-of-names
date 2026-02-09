@@ -19,8 +19,17 @@ class WheelSpinner {
         this.spinSpeedMax = 115;    // rad/s
         this.stopThreshold = 0.35;  // rad/s – below this we consider the wheel stopped
         
-        // CHEAT MODE: Add your name here (case-insensitive)
-        this.yourName = 'Raghav'; // Change this to your actual name
+        // CHEAT MODE: Names/patterns to never land on. Use strings (exact, case-insensitive) or RegExp.
+        this.avoidNames = [
+            'Raghav',
+            'Akash',
+            'Aryan',
+            'Jalan',              // exact name
+            'Akash',                // another exact name
+            // /^Dr\.\s+/i,        // regex: matches "Dr. Smith", "Dr. Jane" etc.
+            // /^\d+\./,          // regex: matches "1. Alice", "2. Bob"
+            // /^(me|myself)$/i,   // regex: matches "me" or "myself"
+        ];
 
         // Tick sound (wheel rotating) – AudioContext created on first spin
         this.audioCtx = null;
@@ -168,8 +177,12 @@ class WheelSpinner {
     }
 
     isYourName(name) {
-        // Case-insensitive comparison with trimming
-        return name.trim().toLowerCase() === this.yourName.trim().toLowerCase();
+        const n = name.trim();
+        return this.avoidNames.some(entry => {
+            if (typeof entry === 'string') return entry.trim().toLowerCase() === n.toLowerCase();
+            if (entry instanceof RegExp) return entry.test(n);
+            return false;
+        });
     }
 
     showWinner(winner) {
@@ -377,8 +390,8 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('%c🎭 CHEAT MODE ENABLED! 🎭', 'color: #ff6b6b; font-size: 20px; font-weight: bold;');
     console.log('%cTo activate the cheat:', 'color: #4ecdc4; font-size: 14px;');
     console.log('%c1. Open script.js', 'color: #95e1d3; font-size: 12px;');
-    console.log('%c2. Find line: this.yourName = \'YOUR_NAME_HERE\';', 'color: #95e1d3; font-size: 12px;');
-    console.log('%c3. Replace YOUR_NAME_HERE with your actual name', 'color: #95e1d3; font-size: 12px;');
+    console.log('%c2. Find avoidNames array and add strings (exact) or RegExp (patterns)', 'color: #95e1d3; font-size: 12px;');
+    console.log('%c3. Example: [\'Raghav\', /^Dr\\./i] avoids "Raghav" and any name starting with "Dr."', 'color: #95e1d3; font-size: 12px;');
     console.log('%c4. The wheel will NEVER land on your name! 😎', 'color: #f38181; font-size: 12px;');
     console.log('%cYour friends will never know... 🤫', 'color: #ffd93d; font-size: 14px; font-style: italic;');
 });

@@ -62,18 +62,20 @@ Then open: `http://localhost:8000`
 ## ⚙️ Activating the Cheat
 
 1. Open `script.js` in any text editor
-2. Find this line (around line 21):
+2. Find the `avoidNames` array (around line 23)
+3. Add names (exact match, case-insensitive) and/or regex patterns:
    ```javascript
-   this.yourName = 'YOUR_NAME_HERE';
-   ```
-3. Replace `YOUR_NAME_HERE` with your actual name:
-   ```javascript
-   this.yourName = 'John';  // Replace with your name
+   this.avoidNames = [
+       'John',              // exact name
+       'Raghav',
+       /^Dr\.\s+/i,         // regex: matches "Dr. Smith", "Dr. Jane"
+       /^(me|myself)$/i,    // regex: matches "me" or "myself"
+   ];
    ```
 4. Save the file
 5. Refresh the browser
 
-**Important**: The name comparison is case-insensitive, so 'john', 'John', and 'JOHN' are all treated the same.
+**Important**: Strings are matched case-insensitively. Use `RegExp` for patterns (e.g. names starting with "Dr.", numbered entries).
 
 ## 📱 Mobile Optimized
 

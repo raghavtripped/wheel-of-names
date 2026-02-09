@@ -131,13 +131,10 @@ Then open: **http://localhost:8000**
 **No matter which IDE you use:**
 
 1. Open `script.js`
-2. Find line 21:
+2. Find the `avoidNames` array
+3. Add names or regex patterns:
    ```javascript
-   this.yourName = 'YOUR_NAME_HERE';
-   ```
-3. Change to your name:
-   ```javascript
-   this.yourName = 'Sarah';  // Your actual name
+   this.avoidNames = ['Sarah', 'John', /^Dr\./i];
    ```
 4. Save (Cmd+S / Ctrl+S)
 5. Refresh browser

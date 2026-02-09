@@ -4,8 +4,8 @@
 
 ### Step 1: Activate Your Cheat
 1. Open `script.js` in any text editor (Notepad, VS Code, etc.)
-2. Find line 21: `this.yourName = 'YOUR_NAME_HERE';`
-3. Change it to: `this.yourName = 'YourActualName';`
+2. Find the `avoidNames` array in script.js
+3. Add your name(s) or regex: e.g. `['Raghav', 'John', /^Dr\./i]`
 4. Save the file
 
 ### Step 2: Run the Wheel
