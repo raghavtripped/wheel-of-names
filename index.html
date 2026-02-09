@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheel of Names | Random Name Picker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%234285f4'/></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <svg viewBox="0 0 100 100" width="32" height="32">
+                    <circle cx="50" cy="50" r="45" fill="#4285f4"/>
+                    <circle cx="50" cy="50" r="35" fill="#ea4335"/>
+                    <circle cx="50" cy="50" r="25" fill="#fbbc04"/>
+                    <circle cx="50" cy="50" r="15" fill="#34a853"/>
+                </svg>
+                <span>wheelofnames.com</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="header-btn">🎨 Customize</button>
+            <button class="header-btn">📄 New</button>
+            <button class="header-btn">📂 Open</button>
+            <button class="header-btn">💾 Save</button>
+            <button class="header-btn">🔗 Share</button>
+            <button class="header-btn">🖼️ Gallery</button>
+            <button class="header-btn more-btn">More ▾</button>
+            <button class="header-btn">🌐 English</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Left Side - Wheel -->
+        <div class="wheel-section">
+            <div class="ad-notice">
+                <span>Report bad ad 📝</span>
+                <button id="closeAds" class="close-ads-btn">Close ads ✕</button>
+            </div>
+            
+            <div class="wheel-container">
+                <canvas id="wheelCanvas"></canvas>
+                <div class="center-circle">
+                    <div class="spin-instruction">Click to spin</div>
+                    <div class="spin-instruction-sub">or press ctrl+enter</div>
+                </div>
+                <div class="arrow"></div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2>What is the wheel spinner for?</h2>
+                <p>Every day we hear from people who use our website in new ways:</p>
+                <ul>
+                    <li><strong>Random name picker in the classroom:</strong> pick which student will answer the next question.</li>
+                    <li>If you are a retailer, spin the wheel to pick which loyal customer will get the monthly giveaway.</li>
+                    <li>When you give a presentation, use the wheel spinner to pick a lucky winner among the attendees who turned in the survey.</li>
+                    <li><strong>Random name picker at work:</strong> in your daily standup meeting at work, randomize who speaks first.</li>
+                    <li>If you are overwhelmed by your to do items, put them on a wheel and spin to find which one to start with.</li>
+                    <li><strong>Lucky draw name picker at a party:</strong> put all your friends' names on the wheel and spin to find who will go first in a game.</li>
+                    <li>If you can't agree on what to have for dinner, put the alternatives on the wheel and spin.</li>
+                </ul>
+
+                <h2>How to use the wheel spinner</h2>
+                <p>It's easy: type in your entries in the textbox to the right of the wheel, then click the wheel to spin it and get a random winner. To make the wheel your own by customizing the colors, sounds, and spin time, click Customize at the top of the page.</p>
+
+                <h2>Is the wheel truly random?</h2>
+                <p>Yes! To ensure genuinely unpredictable results, this site uses crypto.getRandomValues(), a specialized, high-security function built into modern web browsers. This cryptographically secure function uses high-entropy sources from your operating system to generate truly unpredictable results.</p>
+            </div>
+        </div>
+
+        <!-- Right Side - Entries Panel -->
+        <div class="entries-panel">
+            <div class="panel-header">
+                <button class="tab active" data-tab="entries">Entries 📝</button>
+                <button class="tab" data-tab="results">Results 📊</button>
+            </div>
+
+            <div class="panel-content">
+                <!-- Entries Tab -->
+                <div class="tab-content active" id="entriesTab">
+                    <div class="controls">
+                        <button class="control-btn" id="shuffleBtn">🔀 Shuffle</button>
+                        <button class="control-btn" id="sortBtn">🔤 Sort</button>
+                        <button class="control-btn">🖼️ Add image ▾</button>
+                        <button class="control-btn">⚙️ Advanced</button>
+                    </div>
+
+                    <textarea id="entriesInput" placeholder="Enter names here, one per line...">Ali
+Beatriz
+Charles
+Diya
+Eric
+Fatima
+Gabriel
+Hanna</textarea>
+
+                    <div class="beta-badge">Beta</div>
+                    <button class="add-wheel-btn">+ Add wheel ▾</button>
+                </div>
+
+                <!-- Results Tab -->
+                <div class="tab-content" id="resultsTab">
+                    <div class="results-list">
+                        <p class="no-results">No results yet. Spin the wheel!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-info">
+                <span>Version 397</span>
+                <span class="new-badge">New!</span>
+                <a href="#" class="changelog-link">Changelog</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Celebration sound (applause) when winner is revealed. To use your own: add sounds/celebration.mp3 and set src to it. -->
+    <audio id="celebrationSound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-audience-applause-501.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Confetti canvas (drawn when winner is announced) -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Winner Modal -->
+    <div id="winnerModal" class="modal">
+        <div class="modal-content">
+            <h2>🎉 Winner!</h2>
+            <div id="winnerName" class="winner-name"></div>
+            <button id="closeModal" class="modal-btn">OK</button>
+            <button id="removeWinner" class="modal-btn secondary">Remove from wheel</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
