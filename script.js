@@ -130,8 +130,9 @@ class WheelSpinner {
             console.log('🎭 Cheat: wheel will land on ' + this.entries[winnerIndex]);
         }
 
-        // Target rotation (mod 2π) so the arrow points at winner slice center
-        const targetMod2Pi = (2 * Math.PI - (winnerIndex + 0.5) * sliceAngle + 2 * Math.PI) % (2 * Math.PI);
+        // Target rotation: land at a random position inside the winner's slice (not always dead center)
+        const slicePosition = 0.03 + Math.random() * 0.94; // random point in 3%–97% of slice
+        const targetMod2Pi = (2 * Math.PI - (winnerIndex + slicePosition) * sliceAngle + 2 * Math.PI) % (2 * Math.PI);
         const startRotation = this.rotation;
         const startMod = ((startRotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
         let offset = (targetMod2Pi - startMod + 2 * Math.PI) % (2 * Math.PI);
