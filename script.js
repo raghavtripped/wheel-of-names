@@ -25,7 +25,8 @@ class WheelSpinner {
             'Akash',
             'Aryan',
             'Jalan',              // exact name
-            'Akash',                // another exact name
+            'Akash',
+            'Nimit',                // another exact name
             // /^Dr\.\s+/i,        // regex: matches "Dr. Smith", "Dr. Jane" etc.
             // /^\d+\./,          // regex: matches "1. Alice", "2. Bob"
             // /^(me|myself)$/i,   // regex: matches "me" or "myself"
